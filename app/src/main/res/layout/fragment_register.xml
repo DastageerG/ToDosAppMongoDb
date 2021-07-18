@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.RegisterFragment"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Register "
+        android:textSize="28sp"
+        android:textColor="@color/design_default_color_primary"
+        android:layout_marginTop="100dp"
+        android:fontFamily="serif-monospace"
+        android:textStyle="bold|italic"
+        />
+
+    <EditText
+        android:id="@+id/editTextRegisterFragmentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name"
+        android:inputType="textEmailAddress"
+        android:fontFamily="serif-monospace"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        />
+
+    <EditText
+        android:id="@+id/editTextRegisterFragmentEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        android:fontFamily="serif-monospace"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        />
+
+    <EditText
+        android:id="@+id/editTextRegisterFragmentPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:inputType="textEmailAddress"
+        android:fontFamily="serif-monospace"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonRegisterFragmentRegister"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+
+        />
+
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonRegisterFragmentLogin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Log In"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        />
+
+    <ProgressBar
+        android:id="@+id/progressBarRegisterFragment"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:indeterminateTint="@color/design_default_color_primary"
+        android:visibility="gone"
+        />
+
+
+
+</LinearLayout>

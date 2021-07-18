@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.LogInFragment"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Welcome To ToOdo"
+        android:textSize="28sp"
+        android:textColor="@color/design_default_color_primary"
+        android:layout_marginTop="100dp"
+        android:fontFamily="serif-monospace"
+        android:textStyle="bold|italic"
+        />
+
+    <EditText
+        android:id="@+id/editTextLogInFragmentEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:inputType="textEmailAddress"
+        android:fontFamily="serif-monospace"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        />
+
+    <EditText
+        android:id="@+id/editTextLogInFragmentPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:inputType="textEmailAddress"
+        android:fontFamily="serif-monospace"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonLogInFragmentLogin"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:text="Log In"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+
+            />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonLogInFragmentRegister"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Create Account"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        />
+
+    <ProgressBar
+        android:id="@+id/progressBarLogInFragment"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:indeterminateTint="@color/design_default_color_primary"
+        android:visibility="gone"
+        />
+
+</LinearLayout>

@@ -58,7 +58,7 @@ class LogInFragment : Fragment()
             val validate = Utils.checkLoginFields(email,password);
             if(validate)
             {
-               //authViewModel.authenticateUser(email = email,password = password)
+               authViewModel.authenticateUser(email = email,password = password)
             }
             else
             {

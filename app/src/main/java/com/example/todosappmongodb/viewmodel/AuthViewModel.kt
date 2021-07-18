@@ -28,11 +28,11 @@ class AuthViewModel @Inject constructor  (private val repository: Repository,app
 
 
     var user : MutableLiveData<NetworkResult<UserResponse>> = MutableLiveData();
+    val authData = HashMap<String,String>()
+    lateinit var response: Response<UserResponse>;
 
-    //lateinit var response: Response<UserResponse>;
 
-
-    fun authenticateUser(name:String,email:String,password:String) = viewModelScope.launch(Dispatchers.IO)
+    fun authenticateUser(name:String?=null,email:String,password:String) = viewModelScope.launch(Dispatchers.IO)
         {
 
             user.postValue(NetworkResult.Loading())
@@ -42,31 +42,33 @@ class AuthViewModel @Inject constructor  (private val repository: Repository,app
                 try
                 {
 //                    when name is null exist then Register
-//                    if(name !=null)
-//                    {
-//
-//                        Log.d(TAG, "authenticateUser: registering when name is present")
-//                    }
-//                    else
-//                    {
-//                       //  response = repository.login(email,password)
-//                      //  Log.d(TAG, "authenticateUser: logging when name is not available")
-//                    }
+                    if(name !=null)
+                    {
 
-                   val authData = HashMap<String,String>()
-                    authData.put(USER_NAME,name)
-                    authData.put(EMAIL,email)
-                    authData.put(PASSWORD,password)
-                    val response = repository.register(authData)
-                     user.postValue(handleUserResponse(response))
+                        authData.put(USER_NAME,name)
+                        authData.put(EMAIL,email)
+                        authData.put(PASSWORD,password)
+                        response = repository.register(authData)
+                        user.postValue(handleUserResponse(response))
 
-                }
+                        Log.d(TAG, "authenticateUser: registering when name is present")
+                    }
+                    else
+                    {
+                        authData.put(EMAIL,email)
+                        authData.put(PASSWORD,password)
+                        response = repository.login(authData)
+                        user.postValue(handleUserResponse(response))
+                    } // else closed
+
+
+                } // try  closed
                 catch (e:Exception)
                 {
                    user.postValue(NetworkResult.Error(e.message.toString()))
                     Log.d(TAG, "authenticateUser: Exception : "+e.toString())
                     Log.d(TAG, "authenticateUser:Exception msg "+e.message)
-                }
+                } // catch closed
 
             } // if closed
             else

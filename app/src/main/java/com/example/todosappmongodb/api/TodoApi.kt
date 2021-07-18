@@ -7,8 +7,8 @@ import retrofit2.http.*
 interface TodoApi
 {
 
-   // @POST("api/todo/auth/login")
-   // suspend fun login(@Body logInBody: LogInBody) : Response<UserResponse>
+    @POST("api/todo/auth/login")
+    suspend fun login(@Body auth:Map<String,String>) : Response<UserResponse>
 
 
     @POST("api/todo/auth/register")

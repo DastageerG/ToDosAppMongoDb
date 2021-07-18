@@ -11,7 +11,7 @@ import javax.inject.Inject
 class Repository @Inject constructor(private val todoApi: TodoApi)
 {
 
-//    suspend fun login(email:String,password:String) : Response<UserResponse> = todoApi.login(email,password)
+  suspend fun login(auth:Map<String,String>) : Response<UserResponse> = todoApi.login(auth)
 
     suspend fun register(auth:Map<String,String>) : Response<UserResponse> = todoApi.register(auth)
 

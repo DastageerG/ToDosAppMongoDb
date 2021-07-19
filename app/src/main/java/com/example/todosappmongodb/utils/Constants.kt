@@ -11,6 +11,9 @@ object Constants
     const val  EMAIL = "email"
     const val  PASSWORD = "password"
 
+    // Data Store constants
+    const val  USER = "USER"
+    const val  TOKEN = "token"
 
 
 }

@@ -2,10 +2,8 @@ package com.example.todosappmongodb.fragments
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -32,6 +30,7 @@ class RegisterFragment : Fragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         _binding = FragmentRegisterBinding.inflate(inflater,container,false)
+
 
         // navigate to Log in
         binding.buttonRegisterFragmentLogin.setOnClickListener()
@@ -83,14 +82,18 @@ class RegisterFragment : Fragment()
                 is NetworkResult.Success ->
                 {
                     binding.progressBarRegisterFragment.hide();
-                    Toast.makeText(requireContext(), "Success:", Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, "observerUserResponse:Success :")
-                    Log.d(TAG, "observerUserResponse: "+response.data)
+                    response.data?.token.let ()
+                    {
+                        authViewModel.saveToken(it.toString())
+                        findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
+                    } // let closed
+
                 } // is NetworkResultSuccess closed
             } // when closed
 
         } // observer closed
     } // observerUserResponse closed
+
 
 } // class closed
 

@@ -33,12 +33,7 @@ class MainActivity : AppCompatActivity()
                 ,R.id.registerFragment
             ))
 
-
         setupActionBarWithNavController(navController,appBarConfiguration)
-
-
-
-
 
     }
 

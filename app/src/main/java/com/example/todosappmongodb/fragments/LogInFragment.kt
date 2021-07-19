@@ -84,21 +84,42 @@ class LogInFragment : Fragment()
                 is NetworkResult.Loading -> binding.progressBarLogInFragment.show()
                 is NetworkResult.Error ->
                 {
+                    Log.d(TAG, "observerUserResponse: "+response.data)
                     binding.progressBarLogInFragment.hide()
-                    Toast.makeText(requireContext(), response.message, Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, "observerUserResponse: Error "+response.message)
+                    //Toast.makeText(requireContext(), response.message, Toast.LENGTH_SHORT).show();
                 } // is NetworkResult.Error closed
                 is NetworkResult.Success ->
                 {
                     binding.progressBarLogInFragment.hide();
-                    Log.d(TAG, "observerUserResponse:success ");
-                    Log.d(Constants.TAG, "observerUserResponse:success " + response.data.toString());
-                    Toast.makeText(requireContext(), "token :" + response.data?.token, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, "observerUserResponse: "+response.data?.token)
+                    Toast.makeText(requireContext(), response.data?.msg, Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, "observerUserResponse: "+response.data)
+                    response.data?.token.let()
+                    {
+                        authViewModel.saveToken(it.toString())
+                    } // let closed
+
                 } // is NetworkResultSuccess closed
             } // when closed
 
         } // observer closed
     } // observerUserResponse closed
+
+
+    override fun onStart()
+    {
+        super.onStart()
+
+        authViewModel.getToken.observe(viewLifecycleOwner)
+        {
+            token ->
+            if(!(token.toString().equals("empty")) && token !=null)
+            {
+                findNavController().navigate(R.id.action_logInFragment_to_homeFragment)
+            }
+            Log.d(TAG, "onStart: "+token)
+
+        } // observer closed
+
+    } // onStart closed
 
 } // LogInFragment closed

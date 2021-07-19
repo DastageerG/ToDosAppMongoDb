@@ -5,4 +5,5 @@
     <string name="email">email</string>
     <string name="password">password</string>
     <string name="name">name</string>
+    <string name="log_out">Log out</string>
 </resources>

@@ -13,6 +13,6 @@ class Repository @Inject constructor(private val todoApi: TodoApi)
 
   suspend fun login(auth:Map<String,String>) : Response<UserResponse> = todoApi.login(auth)
 
-    suspend fun register(auth:Map<String,String>) : Response<UserResponse> = todoApi.register(auth)
+  suspend fun register(auth:Map<String,String>) : Response<UserResponse> = todoApi.register(auth)
 
 }

@@ -7,7 +7,9 @@ import android.net.NetworkCapabilities
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.todosappmongodb.data.DataStoreRepo
 import com.example.todosappmongodb.model.UserResponse
 import com.example.todosappmongodb.repository.Repository
 import com.example.todosappmongodb.utils.Constants.EMAIL
@@ -23,10 +25,25 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class AuthViewModel @Inject constructor  (private val repository: Repository,application: Application) :  AndroidViewModel(application)
+class AuthViewModel @Inject constructor  (private val repository: Repository,application: Application,private val dataStoreRepo: DataStoreRepo) :  AndroidViewModel(application)
 {
 
+    // manage user ///
+    val getToken  = dataStoreRepo.getToken.asLiveData()
 
+    fun saveToken(token:String) = viewModelScope.launch (Dispatchers.IO)
+    {
+        dataStoreRepo.saveToken(token)
+    } // saveToken closed
+
+
+    fun clearToken() = viewModelScope.launch (Dispatchers.IO)
+    {
+        dataStoreRepo.clearToken()
+    } // saveToken closed
+
+
+    //////////////  Authenticate User  //////////////////////
     var user : MutableLiveData<NetworkResult<UserResponse>> = MutableLiveData();
     val authData = HashMap<String,String>()
     lateinit var response: Response<UserResponse>;
